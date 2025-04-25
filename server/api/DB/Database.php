@@ -1,48 +1,21 @@
 <?php
 
-namespace API\DB;
+$db_host = 'localhost';
+$db_name = 'budgetDB';
+$user = 'budget_app';
+$pass = 'bdgt48';
 
-use PDO;
-use PDOException;
+try {
 
-
-class Database extends PDO //herite de tout dans PDO ainsi que son construct
-{
-    private static ?self $instance = null;
-
-    private const DB_HOST = 'localhost';
-    private const DB_NAME = 'budgetDB';
-    private const DB_USER = 'budget_app';
-    private const DB_PASSWORD = 'bdgt48';
-
-    public function __construct()
-    {
-        $dsn = "mysql:host=" . self::DB_HOST . ";dbname=" . self::DB_NAME . ";charset=utf8mb4";
-
-        try {
-
-            parent::__construct(
-                $dsn,
-                self::DB_USER,
-                self::DB_PASSWORD,
-                [
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                ]
-            );
-        } catch (PDOException $e) {
-            throw $e;
-        }
-    }
-
-    public static function getInstance(): self
-    {
-
-        if (self::$instance === null) {
-
-            self::$instance = new self();
-        }
-
-        return self::$instance;
-    }
+    $db = new PDO(
+        "mysql:host=" . $db_host . ";dbname=" . $db_name . ";charset=utf8mb4",
+        $user,
+        $pass,
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ]
+    );
+} catch (PDOException $e) {
+    throw $e;
 }
