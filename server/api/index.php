@@ -1,18 +1,8 @@
 <?php
 
-require_once 'autoloader.php';
+session_start();
+// require './app/public/users.php';
 
-use API\Autoloader;
-use API\DB\Database;
+require './app/routeHandler/routes.php';
 
-
-//autoloader pour le chargement des classes
-Autoloader::register();
-
-
-$test = (new Database)
-    ->getInstance()
-    ->query("SELECT * FROM users")
-    ->fetchAll();
-
-var_dump($test);
+// var_dump($test);
