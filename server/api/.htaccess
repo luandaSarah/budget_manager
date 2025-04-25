@@ -1,0 +1,3 @@
+RewriteEngine On 
+RewriteBase /expenses_manager/server/api/
+RewriteRule ^ index.php
