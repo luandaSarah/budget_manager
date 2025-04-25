@@ -5,7 +5,7 @@
  * On le crée en session pour pouvoir y acceder depuis l'ensemble de notre appli
  * @return array
  */
-function InitRoutes(): array
+function initRoutes(): array
 {
     //si la clé "routes" n'existe pas en session, on crée et retourne la clé qui à pour valeur un tableau vide
     if (!in_array('routes', $_SESSION)) {
@@ -15,7 +15,8 @@ function InitRoutes(): array
     return $_SESSION["routes"];
 }
 
-InitRoutes();
+
+
 /**
  * Cette fonction prend en paramettre les informations de la route que l'on souhaite ajouter afin de créer une nouvelle route
  * @param string $name
@@ -39,5 +40,3 @@ function createRoute(string $name, string $url, array $methods): void
     //si non, on ajoute la nouvelle route dans notre array routes
     array_push($_SESSION["routes"], $newRoute);
 }
-
-var_dump($_SESSION["routes"]);

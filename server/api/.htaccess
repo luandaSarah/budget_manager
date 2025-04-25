@@ -1,3 +1,3 @@
 RewriteEngine On 
 RewriteBase /expenses_manager/server/api/
-RewriteRule ^ index.php
+RewriteRule ^([a-zA-Z0-9\-\_\/]*)$ index.php?url=$1
